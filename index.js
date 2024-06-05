@@ -6,7 +6,7 @@ const locationParagraph = document.getElementById("location");
 const successCallback = (position)=>{
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  const speed = position.coords.speed;
+  const speed = (position.coords.speed)*3.6;
 
   
   speedParagraph.textContent = `${Math.round(speed)} km/h`;
