@@ -2,76 +2,91 @@
     {
     "latitude": 75.73957,
      "longitude": 22.46788,
-     "radius": 86
+     "radius": 86,
+     "tangent": 378
 },
     {
     "latitude": 75.73968,
      "longitude": 22.46808,
-     "radius": 86
+     "radius": 86,
+     "tangent": 378
 },
     {
     "latitude": 75.73973,
      "longitude": 22.46831,
-     "radius": 86
+     "radius": 86,
+     "tangent": 378
 },
     {
     "latitude": 75.73669,
      "longitude": 22.46499,
-     "radius": 91
+     "radius": 91,
+     "tangent": 328
 },
     {
     "latitude": 75.73677,
      "longitude": 22.46534,
-     "radius": 91
+     "radius": 91,
+     "tangent": 328
 },
     {
     "latitude": 75.73698,
      "longitude": 22.46562,
-     "radius": 91
+     "radius": 91,
+     "tangent": 328
 },
     {
     "latitude": 75.73632,
      "longitude": 22.4612,
-     "radius": 203
+     "radius": 203,
+     "tangent": 439
 },
     {
     "latitude": 75.73625,
      "longitude": 22.46065,
-     "radius": 203
+     "radius": 203,
+     "tangent": 439
 },
     {
     "latitude": 75.73602,
      "longitude": 22.46015,
-     "radius": 203
+     "radius": 203,
+     "tangent": 439
 },
     {
     "latitude": 75.73449,
      "longitude": 22.45363,
-     "radius": 293
+     "radius": 293,
+     "tangent": 534
 },
     {
     "latitude": 75.73444,
      "longitude": 22.45407,
-     "radius": 293  
+     "radius": 293,
+     "tangent": 534  
 },
     {
     "latitude": 75.73447,
      "longitude": 22.45452,
-     "radius": 293
+     "radius": 293,
+     "tangent": 534 
 },
     {
     "latitude": 75.73472,
      "longitude": 22.44835,
-     "radius": 679
+     "radius": 679,
+     "tangent": 505 
 },
     {
     "latitude": 75.73476,
      "longitude": 22.44793,
-     "radius": 679
+     "radius": 679,
+     "tangent": 505
 },
     {
     "latitude": 75.73483,
      "longitude":22.44751,
-     "radius": 679
+     "radius": 679,
+     "tangent": 505
 }
 ]
