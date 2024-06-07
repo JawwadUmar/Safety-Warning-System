@@ -33,6 +33,15 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
     let closestEntry = null;
     let closestDistance = Number.POSITIVE_INFINITY;
+    
+const button = document.getElementById('start')
+const speedParagraph = document.getElementById("currentspeed");
+const locationParagraph = document.getElementById("location");
+const radiusParagraph = document.getElementById("radius");
+const tangentParagraph = document.getElementById("tangent");
+const safeSpeedParagraph = document.getElementById("safespeed");
+const designSpeedParagraph = document.getElementById("designspeed");
+const warningParagraph = document.getElementById("warning");
 
     fetch(url).
         then(response => response.json())
