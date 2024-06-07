@@ -61,11 +61,11 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
 
-                    const safeSpeed = designSpeed - speedReduction;
+                    const safeSpeed = currentSpeed - speedReduction;
                     safeSpeedParagraph.textContent = `Safe Speed: ${Math.round(safeSpeed)} km/h`;
 
 
-                    if(currentSpeed > safeSpeed){
+                    if(safeSpeed > designSpeed){
                         warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
                     }
 
