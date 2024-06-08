@@ -31,6 +31,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
     const warningDistance = 0.2; //200 meters
     speedParagraph.textContent = `${Math.round(currentSpeed)} km/h`;
+    locationParagraph.textContent = `Latitude: ${currentLatitude}, Longitude: ${currentLongitude}`;
+
+
     let closestEntry = null;
     let closestDistance = Number.POSITIVE_INFINITY;
 
@@ -50,7 +53,10 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
             })
 
-            if(closestEntry && closestDistance<=warningDistance){
+            console.log(closestDistance)
+            console.log(closestEntry)
+
+            if(closestEntry){
                 radiusParagraph.textContent = `Radius: ${closestEntry.radius || 'N/A'}`;
                 tangentParagraph.textContent = `Tangent: ${closestEntry.tangent || 'N/A'}`;
                 
@@ -88,10 +94,6 @@ const successCallback = (position)=>{
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const currentSpeed = (position.coords.speed)*3.6;
-  
-    
-    // speedParagraph.textContent = `${Math.round(currentSpeed)} km/h`;
-    locationParagraph.textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
 
     processDatabase('/data.json', currentSpeed, latitude, longitude);
   
@@ -120,6 +122,8 @@ button.addEventListener('click', (event)=>{
         speedParagraph.textContent = "0 km/h";
         locationParagraph.textContent = "Click on the Start Button to track location";
         button.textContent = '🔑 Start';
+        radiusParagraph.textContent = "N/A"; 
+        tangentParagraph.textContent = "N/A";
         button.classList.toggle('selected');
 
     }
