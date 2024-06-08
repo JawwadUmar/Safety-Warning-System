@@ -89,6 +89,7 @@
         "radius": 679,
         "tangent": 505
     },
+
     {
         "latitude": 22.52143058,
         "longitude": 75.92110968,
@@ -106,5 +107,11 @@
         "longitude": 75.9212541,
         "radius": 34,
         "tangent": 250
+    },
+    {
+        "latitude": 25.6130181,
+        "longitude": 85.1829358,
+        "radius": 1000,
+        "tangent": 1000
     }
 ]
