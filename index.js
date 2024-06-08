@@ -95,7 +95,7 @@ const successCallback = (position)=>{
     const longitude = position.coords.longitude;
     const currentSpeed = (position.coords.speed)*3.6;
 
-    processDatabase('/data.json', currentSpeed, latitude, longitude);
+    processDatabase('data.json', currentSpeed, latitude, longitude);
   
   }
   
