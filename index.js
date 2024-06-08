@@ -57,7 +57,7 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
             // console.log(closestDistance)
             // console.log(closestEntry)
 
-            if(closestEntry){
+            if(closestEntry && closestDistance<=warningDistance){
                 radiusParagraph.textContent = `Radius: ${closestEntry.radius || 'N/A'}`;
                 tangentParagraph.textContent = `Tangent: ${closestEntry.tangent || 'N/A'}`;
                 
