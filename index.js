@@ -6,6 +6,7 @@ const tangentParagraph = document.getElementById("tangent");
 const predictedCurveSpeedParagraph = document.getElementById("predictedCurveSpeed");
 const safeCurveSpeedParagraph = document.getElementById("safeCurveSpeed");
 const warningParagraph = document.getElementById("warning");
+const warningSound = document.getElementById("warningSound");
 
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
@@ -62,8 +63,8 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
                 
 
                  if (closestEntry.radius !== undefined && closestEntry.tangent !==undefined){
-                    const safeCurveSpeed = Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5);
-                    // const safeCurveSpeed = -1;
+                    // const safeCurveSpeed = Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5);
+                    const safeCurveSpeed = -1;
                     safeCurveSpeedParagraph.textContent = `${Math.round(safeCurveSpeed)} km/h`;
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
@@ -75,10 +76,14 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
                     if(predictedCurveSpeed > safeCurveSpeed){
                         warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
+                        warningSound.play();
                     }
 
                     else{
                         warningParagraph.textContent = "";
+                        warningSound.pause();
+                        warningSound.currentTime = 0;
+
                     }
                  }
 
@@ -129,6 +134,8 @@ button.addEventListener('click', (event)=>{
         safeCurveSpeedParagraph.textContent = "N/A";
         predictedCurveSpeedParagraph.textContent = "N/A"
         warningParagraph.textContent = "";
+        warningSound.pause();
+        warningSound.currentTime = 0;
 
         button.classList.toggle('selected');
 
