@@ -3,8 +3,8 @@ const speedParagraph = document.getElementById("currentspeed");
 const locationParagraph = document.getElementById("location");
 const radiusParagraph = document.getElementById("radius");
 const tangentParagraph = document.getElementById("tangent");
-const safeSpeedParagraph = document.getElementById("safespeed");
-const designSpeedParagraph = document.getElementById("designspeed");
+const predictedCurveSpeedParagraph = document.getElementById("predictedCurveSpeed");
+const safeCurveSpeedParagraph = document.getElementById("safeCurveSpeed");
 const warningParagraph = document.getElementById("warning");
 
 function deg2rad(deg) {
@@ -53,8 +53,8 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
             })
 
-            console.log(closestDistance)
-            console.log(closestEntry)
+            // console.log(closestDistance)
+            // console.log(closestEntry)
 
             if(closestEntry && closestDistance<=warningDistance){
                 radiusParagraph.textContent = `Radius: ${closestEntry.radius || 'N/A'}`;
@@ -62,16 +62,16 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
                 
 
                  if (closestEntry.radius !== undefined && closestEntry.tangent !==undefined){
-                    const designSpeed = Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5);
-                    designSpeedParagraph.textContent = `Design Speed: ${Math.round(designSpeed)} km/h`;
+                    const safeCurveSpeed = Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5);
+                    safeCurveSpeedParagraph.textContent = `${Math.round(safeCurveSpeed)} km/h`;
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
 
-                    const safeSpeed = currentSpeed - speedReduction;
-                    safeSpeedParagraph.textContent = `Safe Speed: ${Math.round(safeSpeed)} km/h`;
+                    const predictedCurveSpeed = currentSpeed - speedReduction;
+                    predictedCurveSpeedParagraph.textContent = `${Math.round(predictedCurveSpeed)} km/h`;
 
 
-                    if(safeSpeed > designSpeed){
+                    if(predictedCurveSpeed > safeCurveSpeed){
                         warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
                     }
 
@@ -124,8 +124,8 @@ button.addEventListener('click', (event)=>{
         button.textContent = '🔑 Start';
         radiusParagraph.textContent = "N/A"; 
         tangentParagraph.textContent = "N/A";
-        designSpeedParagraph.textContent = "N/A";
-        safeSpeedParagraph.textContent = "N/A"
+        safeCurveSpeedParagraph.textContent = "N/A";
+        predictedCurveSpeedParagraph.textContent = "N/A"
 
         button.classList.toggle('selected');
 
