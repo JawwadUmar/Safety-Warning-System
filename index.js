@@ -124,6 +124,9 @@ button.addEventListener('click', (event)=>{
         button.textContent = '🔑 Start';
         radiusParagraph.textContent = "N/A"; 
         tangentParagraph.textContent = "N/A";
+        designSpeedParagraph.textContent = "N/A";
+        safeSpeedParagraph.textContent = "N/A"
+
         button.classList.toggle('selected');
 
     }
