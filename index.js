@@ -69,8 +69,8 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
 
-                    // const predictedCurveSpeed = currentSpeed - speedReduction;
-                    const predictedCurveSpeed = currentSpeed ;
+                    const predictedCurveSpeed = currentSpeed - speedReduction;
+                    // const predictedCurveSpeed = currentSpeed ;
                     predictedCurveSpeedParagraph.textContent = `${Math.round(predictedCurveSpeed)} km/h`;
 
 
