@@ -6,7 +6,8 @@ const tangentParagraph = document.getElementById("tangent");
 const predictedCurveSpeedParagraph = document.getElementById("predictedCurveSpeed");
 const safeCurveSpeedParagraph = document.getElementById("safeCurveSpeed");
 const warningParagraph = document.getElementById("warning");
-const warningSound = document.getElementById("warningSound");
+const warningSound1 = document.getElementById("warningSound1");
+const warningSound2 = document.getElementById("warningSound2");
 
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
@@ -64,7 +65,7 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
 
                  if (closestEntry.radius !== undefined && closestEntry.tangent !==undefined){
                     const safeCurveSpeed = Math.min(Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5), 80);
-                    // const safeCurveSpeed = -1;
+                    // const safeCurveSpeed = -15;
                     safeCurveSpeedParagraph.textContent = `${Math.round(safeCurveSpeed)} km/h`;
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
@@ -74,15 +75,22 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
                     // predictedCurveSpeedParagraph.textContent = `${Math.round(predictedCurveSpeed)} km/h`;
 
 
-                    if(predictedCurveSpeed > safeCurveSpeed+10){
+                    if(predictedCurveSpeed > safeCurveSpeed+20){
                         warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
-                        warningSound.play();
+                        warningSound2.play();
+                    }
+
+                    else if(predictedCurveSpeed > safeCurveSpeed+10){
+                        warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
+                        warningSound1.play();
                     }
 
                     else{
                         warningParagraph.textContent = "";
-                        warningSound.pause();
-                        warningSound.currentTime = 0;
+                        warningSound1.pause();
+                        warningSound2.pause();
+                        warningSound1.currentTime = 0;
+                        warningSound2.currentTime = 0;
 
                     }
                  }
@@ -134,8 +142,10 @@ button.addEventListener('click', (event)=>{
         safeCurveSpeedParagraph.textContent = "N/A";
         // predictedCurveSpeedParagraph.textContent = "N/A"
         warningParagraph.textContent = "";
-        warningSound.pause();
-        warningSound.currentTime = 0;
+        warningSound1.pause();
+        warningSound2.pause();
+        warningSound1.currentTime = 0;
+        warningSound2.currentTime = 0;
 
         button.classList.toggle('selected');
 
