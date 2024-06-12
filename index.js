@@ -63,18 +63,18 @@ function processDatabase(url, currentSpeed, currentLatitude, currentLongitude){
                 
 
                  if (closestEntry.radius !== undefined && closestEntry.tangent !==undefined){
-                    const safeCurveSpeed = Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5);
+                    const safeCurveSpeed = Math.min(Math.sqrt((0.22) * 9.8 * closestEntry.radius) * (18/5), 80);
                     // const safeCurveSpeed = -1;
                     safeCurveSpeedParagraph.textContent = `${Math.round(safeCurveSpeed)} km/h`;
 
                     const speedReduction = (1388.42/(closestEntry.radius) +0.05*closestEntry.tangent + 2.872);
 
-                    const predictedCurveSpeed = currentSpeed - speedReduction;
-                    // const predictedCurveSpeed = currentSpeed ;
-                    predictedCurveSpeedParagraph.textContent = `${Math.round(predictedCurveSpeed)} km/h`;
+                    // const predictedCurveSpeed = currentSpeed - speedReduction;
+                    const predictedCurveSpeed = currentSpeed ;
+                    // predictedCurveSpeedParagraph.textContent = `${Math.round(predictedCurveSpeed)} km/h`;
 
 
-                    if(predictedCurveSpeed > safeCurveSpeed){
+                    if(predictedCurveSpeed > safeCurveSpeed+10){
                         warningParagraph.textContent = "Warning: Speed Limit Exceeded!";
                         warningSound.play();
                     }
@@ -132,7 +132,7 @@ button.addEventListener('click', (event)=>{
         radiusParagraph.textContent = "N/A"; 
         tangentParagraph.textContent = "N/A";
         safeCurveSpeedParagraph.textContent = "N/A";
-        predictedCurveSpeedParagraph.textContent = "N/A"
+        // predictedCurveSpeedParagraph.textContent = "N/A"
         warningParagraph.textContent = "";
         warningSound.pause();
         warningSound.currentTime = 0;
