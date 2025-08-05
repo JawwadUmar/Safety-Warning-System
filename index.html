@@ -4,47 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Safety Warning System</title>
-  <meta name="description" content="Simple speedometer progressive web app based on Geolocation API.">
-  <meta name="theme-color" content="#f1f1f1">
+  <meta name="description" content="Curve speed warning system based on Geolocation API">
+  <meta name="theme-color" content="#121212">
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-  <div class="readout">
-    <h1>Curve Speed Warning System</h1>
-    <p>Your current location is:</p>
-    <p id="location">Click on the Start Button to track location</p>
-</div>
-
-  <div id="readout">
-    <h2>Speed Information</h2>
-        <p>Your Current Speed is:</p>
-        <p id="currentspeed">0 km/h</p>
-        <!-- <p>Curve Speed (<em>V<sub>c</sub></em>):</p>
-        <p id="predictedCurveSpeed">N/A</p> -->
-        <p>Safe Curve Speed (<em>V<sub>cs</sub></em>):</p>
-        <p id="safeCurveSpeed">N/A</p>
+  <div class="container">
+    <header>
+      <h1>Curve Speed Warning System</h1>
+      <p id="location">Click Start to begin tracking your location</p>
+    </header>
+    
+    <div class="card">
+      <h2 class="card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        Speed Information
+      </h2>
+      <div class="data-group">
+        <div class="data-item">
+          <span class="data-label">Current Speed</span>
+          <span id="currentspeed" class="speed-display">0 km/h</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Safe Curve Speed</span>
+          <span id="safeCurveSpeed" class="speed-display">N/A</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2 class="card-title">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg> -->
+        📐Road Geometry
+      </h2>
+      <div class="data-group">
+        <div class="data-item">
+          <span class="data-label">Radius of Curve (m)</span>
+          <span id="radius" class="data-value">N/A</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Tangent Length (m)</span>
+          <span id="tangent" class="data-value">N/A</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="warning"></div>
+    
+    <div class="button-container">
+      <button id="start">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+          <path d="M8.5 8.5v.01"></path>
+          <path d="M16 15.5v.01"></path>
+          <path d="M12 12v.01"></path>
+          <path d="M11 17v.01"></path>
+          <path d="M7 14v.01"></path>
+        </svg>
+        Start Tracking
+      </button>
+    </div>
   </div>
 
-  <div class="readout">
-    <h2>Geometric Information</h2>
-    <p>Radius of Curve <em>(m)</em>:</p>
-    <p id="radius">N/A</p>
-    <p>Tangent Length <em>(m)</em>:</p>
-    <p id="tangent">N/A</p>
-</div>
-
-<div>
-  <p id="warning"></p>
   <audio id="warningSound1" src="warning1.mp3"></audio>
   <audio id="warningSound2" src="warning2.mp3"></audio>
 
-</div>
-
-
- 
-    <button id="start">🔑 Start</button>
   <script src="index.js"></script>
 </body>
 </html>
